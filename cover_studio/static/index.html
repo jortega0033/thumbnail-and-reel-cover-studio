@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cover Studio</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="layout">
+  <aside aria-label="Project" class="sidebar">
+    <h1>Cover Studio</h1>
+    <button type="button" id="new-project" class="btn">New project</button>
+    <h2 id="list-heading">Projects</h2>
+    <ul id="project-list" data-testid="project-list" aria-labelledby="list-heading"></ul>
+  </aside>
+  <main>
+    <form id="editor" novalidate>
+      <div class="field">
+        <label for="title">Title</label>
+        <input id="title" data-testid="title" type="text" maxlength="80" autocomplete="off" required aria-describedby="title-err">
+        <span id="title-err" class="field-err"></span>
+      </div>
+      <div class="field">
+        <label for="overlay">Overlay text</label>
+        <textarea id="overlay" data-testid="overlay" rows="2" maxlength="120" aria-describedby="overlay-count overlay-err"></textarea>
+        <span id="overlay-count" class="hint">0 / 120</span>
+        <span id="overlay-err" class="field-err"></span>
+      </div>
+      <div class="field">
+        <label for="preset">Preset</label>
+        <select id="preset" data-testid="preset" disabled>
+          <option value="reel_9_16">Reel cover 9:16 (450x800)</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="focal-x-num">Focal X (%)</label>
+          <div class="pair">
+            <input id="focal-x-range" type="range" min="0" max="100" step="1" aria-label="Focal X slider">
+            <input id="focal-x-num" data-testid="focal-x" type="number" min="0" max="100" step="1" aria-describedby="focal-x-err">
+          </div>
+          <span id="focal-x-err" class="field-err"></span>
+        </div>
+        <div class="field">
+          <label for="focal-y-num">Focal Y (%)</label>
+          <div class="pair">
+            <input id="focal-y-range" type="range" min="0" max="100" step="1" aria-label="Focal Y slider">
+            <input id="focal-y-num" data-testid="focal-y" type="number" min="0" max="100" step="1" aria-describedby="focal-y-err">
+          </div>
+          <span id="focal-y-err" class="field-err"></span>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="submit" id="save" data-testid="save" class="btn">Save</button>
+        <span id="status" data-testid="status" role="status" aria-live="polite">Loading</span>
+      </div>
+      <div id="error" data-testid="error" role="alert" class="error" hidden>
+        <span id="error-text"></span>
+        <button type="button" id="reload" class="btn" hidden>Reload latest</button>
+      </div>
+    </form>
+    <p id="crop-readout" data-testid="crop-readout" class="readout">crop x=375 y=0 w=450 h=800</p>
+    <div class="canvases">
+      <figure>
+        <figcaption>Preview (450x800)</figcaption>
+        <canvas id="preview" data-testid="preview" width="450" height="800" role="img" aria-label="Preview"></canvas>
+      </figure>
+      <figure>
+        <figcaption>Source overview (1200x800)</figcaption>
+        <div class="stage" id="stage">
+          <canvas id="overview" data-testid="overview" width="1200" height="800" role="img" aria-label="Source overview"></canvas>
+          <div id="marker" class="marker" tabindex="0" role="slider" aria-label="Focal point marker" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="X 50 percent, Y 50 percent"></div>
+        </div>
+      </figure>
+    </div>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
