@@ -5,6 +5,8 @@ A small offline editor for static thumbnail and reel cover art. Choose a focal p
 ## Status
 Baseline milestone (M1): one working preset (Reel cover 9:16, 450x800) over a generated 1200x800 red/green/blue stripe canvas, an editable text overlay, a focal point that moves the crop, and SQLite save/reopen. Batch PNG export, masks, undo, keyboard layer transforms and more presets are planned. See [docs/PRD.md](docs/PRD.md).
 
+What is implemented, planned or still unverified, and where the PRD and the code differ, is recorded in [docs/architecture.md](docs/architecture.md). Rules for contributors and coding agents are in [CLAUDE.md](CLAUDE.md).
+
 ## Requirements
 Python 3.12 or newer and a modern browser (Chrome is the verification target). No network access is needed.
 
@@ -45,3 +47,4 @@ See [LICENSE](LICENSE).
 
 - The unit suite passed on Windows with Python 3.13 and on Ubuntu 24.04 in WSL2 with Python 3.12 (30 tests on Ubuntu). On Linux, use `python3` in the launch and test commands if `python` is unavailable.
 - Windows Chrome 157 ran the workflow with external browser requests blocked. Changed the cover text and focal crop, then saved and reopened the cover with both edits intact after a server restart. The browser reported no uncaught page errors.
+- 2026-11-22, preparation pass, Windows 11, Python 3.13.14, commit `a989b33`: the unit suite passed (`Ran 30 tests`, `OK`). Demo flow steps 1 to 7 were run by hand in a Chromium 156 browser: crop readout `x=375` at 50 percent and `x=0` after moving Focal X to 0 with the keyboard, markup-like overlay text shown literally, save, server restart, and the same project reopened. Preview pixels at focal 0.5 were red at x=24, green at x=25 and x=424, blue at x=425. Requests were observed to stay on the loopback origin but were not actively blocked. Not reproduced in that pass: the Windows Chrome 157 run with blocked external requests and the Ubuntu run above. Details: [docs/architecture.md](docs/architecture.md), section 9.

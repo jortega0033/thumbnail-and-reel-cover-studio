@@ -2,6 +2,8 @@
 
 Status: baseline milestone M1 implemented locally; milestones M2 to M6 are planned. Items marked **[Default]** are proposed defaults that can be changed. Items marked **[Open]** are unresolved.
 
+This document describes the target. The current state of the code, the checks that were actually observed, and the known differences between this document and the repository are recorded in [architecture.md](architecture.md).
+
 ## 1. Product definition
 
 ### 1.1 Problem and user
