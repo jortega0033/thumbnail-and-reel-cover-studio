@@ -21,7 +21,7 @@ The project subagents in `.claude/agents/` are part of the work. Delegate to the
 7. **Specialist review.** Run every role in the table "After coding" whose trigger matches the change.
 8. **Review gate, always.** Run Code Reviewer on the full diff. Fix every material finding, re-run the checks, and have the reviewer look again until no material finding is left.
 9. **Acceptance gate, always.** Run Reality Checker with the ticket's acceptance criteria and the evidence you produced. Do not call the ticket done unless it passes.
-10. **Hand off.** Capture the evidence `CLAUDE.md` asks for and open a draft pull request that names the issue. Do not merge.
+10. **Hand off.** Capture the evidence `CLAUDE.md` asks for and open a draft pull request that names the issue (`Closes #n`) and the epic. Do not merge.
 
 ## Roles
 
