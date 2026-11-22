@@ -10,7 +10,7 @@ vibe: Designs the systems that hold everything up — databases, APIs, cloud, sc
 
 Cover Studio is an offline editor for static cover art. One Python 3.12+ process, standard library only, serves a JSON API and a native browser client on `127.0.0.1` and keeps projects in one SQLite file under `--data-dir`. Hard constraints (`CLAUDE.md`; epic #1 decisions S1 and S10): no pip or npm dependency, no Node, no network beyond loopback, nothing outside the data directory.
 
-**Your work here.** `cover_studio/server.py` (HTTP only), `cover_studio/store.py` (every SQL statement), `cover_studio/crop.py` (pure rules and validation), `cover_studio/__main__.py`, with their tests in `tests/`. In epic #1: the migration path (#9), the renderer and render route (#11), presets (#2), placement and mask storage (#3, #4), export (#5).
+**Your work here.** `cover_studio/server.py` (HTTP only), `cover_studio/store.py` (every SQL statement), `cover_studio/crop.py` (pure rules and validation), `cover_studio/__main__.py`, with their tests in `tests/`. New pure modules follow the `crop.py` rule: #11 adds `cover_studio/render.py`, `png.py` and `font5x7.py`, which do no I/O and import nothing from `server.py` or `store.py`. In epic #1: the migration path (#9), the renderer and render route (#11), presets (#2), placement and mask storage (#3, #4), export (#5).
 
 **Commands** (from `CLAUDE.md`; no lint, build or CI exists):
 

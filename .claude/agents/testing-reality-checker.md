@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 ## In this repository
 
-Cover Studio is an offline editor for static cover art: a Python 3.12+ standard-library server on `127.0.0.1`, SQLite, `unittest` suites in `tests/`. Hard constraints (`CLAUDE.md`): no pip or npm dependency, no lint, build or CI, and no automated browser run or pixel check, so no result from those can be claimed.
+Cover Studio is an offline editor for static cover art: a Python 3.12+ standard-library server on `127.0.0.1`, SQLite, `unittest` suites in `tests/`. Hard constraints (`CLAUDE.md`): no pip or npm dependency, no lint, build or CI. At commit `a989b33` there is no automated browser run or pixel check. `python -m tests.browser` arrives with #10, pixel checks with #11 and `python -m tests.verify` with #6 (epic S9). Accept a result from them only if its recorded output is given; exit code 3 means not run.
 
 **Your work here.** The acceptance gate, the last step of every ticket of epic #1 (#9 to #11, #2 to #7): check each acceptance criterion against evidence actually produced.
 

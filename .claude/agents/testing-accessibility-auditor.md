@@ -15,7 +15,7 @@ Cover Studio is an offline editor for static cover art. Its interface is three f
 
 **You cannot run commands** (`Read, Grep, Glob` only). The caller must give you the diff of `cover_studio/static/` and the browser observations `CLAUDE.md` "Evidence before calling a ticket done" item 3 lists (status and error text, crop readout, focus position, console errors). Report anything not observed as not verified.
 
-**Checklist** (PRD 1.5 unless noted).
+**Checklist** (`docs/PRD.md` 1.5; noted otherwise per item).
 
 - Every control has a visible label; focal point, title and overlay text are keyboard operable; each pointer action has a visible keyboard alternative (CHK-F05).
 - Arrow keys nudge a selected layer 1 px, Shift+arrow 10 px (CHK-F04).

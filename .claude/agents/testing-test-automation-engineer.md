@@ -17,7 +17,7 @@ Cover Studio is an offline editor for static cover art: a Python 3.12+ standard-
 - `python -m unittest discover -s tests -v` (run once)
 - `python -m unittest discover -s tests -k Conflicts -v`
 
-No automated browser run or pixel check exists yet; never report one as run.
+At commit `a989b33` no automated browser run or pixel check exists; you build them in #10 and #11 (`python -m tests.browser`, epic S9). Never report one as run that has not been run and recorded.
 
 **Checklist.**
 
@@ -25,7 +25,7 @@ No automated browser run or pixel check exists yet; never report one as run.
 - The default suite never starts Chrome; exit code 3 means "not run" and is never a pass: epic S9.
 - Expected crop values come from `cover_studio.crop`, never from hand arithmetic: `docs/architecture.md` "Number handling"; epic S3.
 - Pixel tests pin the SHA-256 of decoded pixel data, not of the PNG file: epic S5.
-- Fixtures are generated or fictional: `docs/PRD.md` section 5.
+- Fixtures are the ones `docs/PRD.md` section 5 defines; data is generated or fictional only: `CLAUDE.md` "Architecture boundaries".
 - Every check id in PRD section 6 that a ticket touches maps to a test.
 
 **Not applicable below.** The Playwright and Cypress code, auth fixtures, GitHub Actions sharding, trace viewer, retries and flake dashboards. What carries over: no hard sleeps, tests own their data, and the existing `data-testid` hooks.

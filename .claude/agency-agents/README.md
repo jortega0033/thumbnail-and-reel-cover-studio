@@ -11,7 +11,7 @@ The Markdown files in `.claude/agents/` whose names start with `engineering-` or
 
 ## Installed roles
 
-"Upstream SHA-256" is the hash of the file as fetched at the pinned revision. Reviewer roles have one added frontmatter line, `tools: Read, Grep, Glob`, so they cannot edit files or run commands. Nothing else in any file was changed.
+"Upstream SHA-256" is the hash of the file as fetched at the pinned revision. Reviewer roles have one added frontmatter line, `tools: Read, Grep, Glob`, so they cannot edit files or run commands. Nothing else in any file was changed at that point; two later local changes apply to all eight roles, including the three marked "none" in the table (see "Local change: automatic delegation" below).
 
 | File in `.claude/agents/` | `name:` | Upstream path | Upstream SHA-256 | Local change |
 |---|---|---|---|---|
@@ -61,7 +61,7 @@ Observed on 2026-11-22 with Claude Code 2.1.323, headless (`claude -p --model ha
 
 - Software Architect, Code Reviewer, Codebase Onboarding Engineer, Accessibility Auditor, Reality Checker and `loop-verifier` were listed with `Read, Grep, Glob`, and a launched Reality Checker reported exactly those three tools. The user-level copies of these roles have no `tools:` line, so this shows that the project copies were the ones loaded.
 - Backend Architect, Frontend Developer and Test Automation Engineer were listed with all tools.
-- **Not shown:** that those three are loaded from the project copies. Their files are unchanged from upstream and have no `tools:` line, exactly like a user-level install, and the listing shows names and tools only, not where a definition comes from. Project precedence for these three is assumed from how Claude Code resolves names, not observed. On a machine without a user-level install, check that the three names are listed at all.
+- **Not shown:** that those three are loaded from the project copies. At the time of this check their files were unchanged from upstream (no longer true: see "Local change: automatic delegation" below) and had no `tools:` line, exactly like a user-level install, and the listing shows names and tools only, not where a definition comes from. Project precedence for these three is assumed from how Claude Code resolves names, not observed. On a machine without a user-level install, check that the three names are listed at all.
 
 ## Updating
 
