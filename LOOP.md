@@ -74,7 +74,16 @@ Run on 2026-11-22 from the repository root, after the adaptations above and befo
 | `npx --yes @cobusgreyling/loop@0.2.0 doctor .` | exit 0, `Status: HEALTHY`, `Ready: 100/100 L2`, `state=STATE.md LOOP.md=yes budget=yes run-log=yes gate=no` |
 | `npx --yes @cobusgreyling/loop@0.2.0 status .` | exit 0, `Pattern: daily-triage`, `Ready: 100/100 L2`, `State: STATE.md · never`, `constraints=yes`, no recent runs |
 
-"Ready: 100/100 L2" is the tool's score for which files exist and how recently they changed. It is not the operating level. The operating level is L1 report-only, and no loop run has taken place. Once the commit that adds `STATE.md` and `loop-run-log.md` exists, the tool may print `L3` for 14 days, because it counts any commit that touched those two files as loop activity; that label says nothing about this repository being ready for L3.
+Run again on 2026-11-22 after the files were committed:
+
+| Command | Result |
+|---|---|
+| `npx --yes @cobusgreyling/loop@0.2.0 doctor .` | exit 0, `Status: HEALTHY`, `Ready: 100/100 L3`, `state=STATE.md LOOP.md=yes budget=yes run-log=yes gate=no` |
+| `npx --yes @cobusgreyling/loop@0.2.0 status .` | exit 0, `Pattern: daily-triage`, `Ready: 100/100 L3`, `State: STATE.md · never`, `constraints=yes`, no recent runs |
+
+The label moved from L2 to L3 although no loop run has taken place. The tool counts any Git commit that touched `STATE.md` or `loop-run-log.md` in the last 14 days as loop activity (read in the tool's `loop-audit` code, function `detectLoopActivity`), and the commit that added those two files is such a commit. The label will fall back once that commit is older than 14 days. It says nothing about this repository being ready for L3.
+
+"Ready: 100/100 L2" or "L3" is the tool's score for which files exist and how recently they changed. It is not the operating level. The operating level is L1 report-only.
 
 Doctor's suggested next actions (a `docs/safety.md`, issue and pull request templates, workflows, a pattern registry) were not followed: this repository has no CI, and the denylist lives in `loop-constraints.md`. `gate=no` means no CI gate workflow exists, which is intended.
 
