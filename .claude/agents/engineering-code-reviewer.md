@@ -13,7 +13,7 @@ Cover Studio is an offline editor for static cover art: one Python 3.12+ process
 
 **Your work here.** The review gate on every ticket of epic #1 (#9 to #11, #2 to #7): review the full diff before the work is called done.
 
-**You cannot run commands** (`Read, Grep, Glob` only). The caller must give you the ticket branch's full diff against `origin/main`, the issue's acceptance criteria, and the recorded output of `python -m unittest discover -s tests -v`.
+**You cannot run commands** (`Read, Grep, Glob` only). The caller must give you the ticket branch's full diff against `origin/main`, the issue's acceptance criteria, and the recorded output of `python -m unittest discover -s tests -v`; the driver writes these to `.claude/state/review/` in the ticket worktree and names the files.
 
 **Checklist.**
 
