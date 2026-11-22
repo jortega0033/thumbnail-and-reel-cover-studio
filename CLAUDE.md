@@ -58,13 +58,13 @@ The default branch is `main`. The rules below are the workflow; CI and the pull 
 - Never commit to `main` directly and never force-push.
 - One branch per issue, cut from the tip of `origin/main`: `feature/<issue-number>-<short-name>`.
 - Small commits with a present-tense subject that says what changed (`feat:`, `fix:`, `test:`, `docs:`, `chore:` prefixes).
-- Open a draft pull request that names the issue (`Closes #n`) and the epic. The owner reviews and merges; agents do not merge.
+- Open a draft pull request that names the issue (`Closes #n`) and the epic, only after the local checks pass and Code Reviewer and Reality Checker have both run. The owner reviews and merges; agents do not merge.
 - Do not edit `LICENSE`. Do not commit a data directory, a database file, exported images or `.claude/settings.local.json`.
 - Do not start work on an issue whose prerequisites in the epic are not merged.
 
 ## Evidence before calling a ticket done
 
-Put this in the pull request description. Report only what you ran and saw.
+Put this in the pull request description. Report only what you ran and saw. Items 1 to 6 and 8 are recorded locally before the draft pull request is opened; the gates check them. Item 7 comes after: CI runs on the draft pull request, and the driver (not Reality Checker) checks it before marking the pull request ready.
 
 1. The commit the checks ran on, the operating system, and the Python version (and the Chrome version once a browser run is involved).
 2. `python -m unittest discover -s tests -v`: the `Ran N tests` line and the result. N must not go down without an explanation.
@@ -72,7 +72,7 @@ Put this in the pull request description. Report only what you ran and saw.
 4. For anything that produces pixels: the sampled coordinates and the colour values read, or the hash of the decoded pixel data, and the fixture they belong to.
 5. Each acceptance criterion of the issue with the check that proves it, or a plain statement that it was not verified and why.
 6. Every server or browser process you started has been stopped.
-7. CI is green on the last commit (`gh pr checks`).
+7. After the draft pull request is open: CI is green on the last commit (`gh pr checks`). A pull request is marked ready only when this holds.
 8. If the change affects a status in `docs/architecture.md`, the README "Status" section or the PRD story and check tables, those are updated in the same pull request. New observed results go in the README "Baseline verification" section with date, host and commit.
 
 A claim such as "works in Chrome" without the items in point 3 does not count.
@@ -90,7 +90,7 @@ When asked to implement, continue or finish a GitHub issue, follow the playbook 
 | Before coding | Codebase Onboarding Engineer (unfamiliar area); Software Architect (a boundary, data model, schema, API or dependency changes) |
 | While coding | Backend Architect (`cover_studio/*.py`), Frontend Developer (`cover_studio/static/`), Test Automation Engineer (`tests/`), matching the files being changed |
 | After coding, when the change matches | Accessibility Auditor (user-facing UI, keyboard handling, focus order, markup) |
-| On every ticket, however small, before it is called done | Code Reviewer on the full diff (review gate), then Reality Checker on the acceptance criteria and the evidence (acceptance gate) |
+| On every ticket, however small, before it is called done | Code Reviewer on the full diff (review gate), then Reality Checker on the acceptance criteria and the locally recorded evidence (acceptance gate). Both run before the draft pull request is opened |
 
 - The five reviewer roles (Software Architect, Code Reviewer, Codebase Onboarding Engineer, Accessibility Auditor, Reality Checker) are limited to `Read, Grep, Glob`. Give them the diff, the acceptance criteria and the recorded command output.
 - The session or role that wrote a change does not count as its reviewer.
@@ -104,9 +104,9 @@ Loop Engineering is set up at L1: a report-only triage run that a person starts 
 ## Delivery workflow
 
 - **Start and driver.** The owner starts ticket work with `/next-ticket` ([`.claude/skills/next-ticket/SKILL.md`](.claude/skills/next-ticket/SKILL.md)); starting it is the go signal. It runs one ticket through the [`implement-ticket`](.claude/skills/implement-ticket/SKILL.md) playbook and never merges.
-- **Review gate.** [`.claude/hooks/role_gate.py`](.claude/hooks/role_gate.py) blocks `gh pr create` and `gh pr ready` until Code Reviewer and Reality Checker have run after the last code edit. `ROLE_GATE=off` in the environment Claude Code is started from switches it off for that session.
+- **Review gate.** [`.claude/hooks/role_gate.py`](.claude/hooks/role_gate.py) blocks `gh pr create` and `gh pr ready` until Code Reviewer and Reality Checker have run after the last code edit. Order: local checks, both gates, draft pull request, CI, then ready only on green CI. `ROLE_GATE=off` in the environment Claude Code is started from switches it off for that session.
 - **Permissions.** [`.claude/settings.json`](.claude/settings.json): see the file for what is allowed, denied and asked first. In short, force pushes, pushes to `main`, `gh pr merge`, releases and reads of `.env` are denied.
-- **CI.** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs the suite and the gate self-test on Linux and Windows. It must be green before a pull request is marked ready.
+- **CI.** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs the suite and the gate self-test on Linux and Windows. It runs on the draft pull request and must be green on the last commit before the pull request is marked ready; a fix after a red run means re-running the local checks and both gates, then pushing.
 - **Pull request.** Use [`.github/pull_request_template.md`](.github/pull_request_template.md). Tickets use [`.github/ISSUE_TEMPLATE/implementation-ticket.md`](.github/ISSUE_TEMPLATE/implementation-ticket.md) and the labels `status:ready`, `status:blocked`, `status:in-progress` and `needs-decision`.
 - **Changelog.** Every ticket pull request adds one line under Unreleased in [`CHANGELOG.md`](CHANGELOG.md).
 - **UI and copy.** [`docs/ui-quality.md`](docs/ui-quality.md) holds the ten UI rules; the `ui-ux-pro-max` and `unslop` skills in `.claude/skills/` are used as the playbook says.

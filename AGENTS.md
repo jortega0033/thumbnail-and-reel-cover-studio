@@ -16,5 +16,5 @@ Follow the steps in [`.claude/skills/implement-ticket/SKILL.md`](.claude/skills/
 
 ## Loop conventions
 
-- The loop is at L1: report-only, started by hand, no scheduler, no automated fixes, no auto-merge.
+- The loop is at L1: report-only, started by hand, no scheduler and no loop workflow (the CI workflow only runs tests on pull requests), no automated fixes, no auto-merge.
 - See [`LOOP.md`](LOOP.md) for the manual triage command and the human gates.

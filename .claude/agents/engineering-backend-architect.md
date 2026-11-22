@@ -12,7 +12,7 @@ Cover Studio is an offline editor for static cover art. One Python 3.12+ process
 
 **Your work here.** `cover_studio/server.py` (HTTP only), `cover_studio/store.py` (every SQL statement), `cover_studio/crop.py` (pure rules and validation), `cover_studio/__main__.py`, with their tests in `tests/`. New pure modules follow the `crop.py` rule: #11 adds `cover_studio/render.py`, `png.py` and `font5x7.py`, which do no I/O and import nothing from `server.py` or `store.py`. In epic #1: the migration path (#9), the renderer and render route (#11), presets (#2), placement and mask storage (#3, #4), export (#5).
 
-**Commands** (from `CLAUDE.md`; no lint, build or CI exists):
+**Commands** (from `CLAUDE.md`; no lint or build step; CI in `.github/workflows/ci.yml` runs the first command and the gate self-test):
 
 - `python -m unittest discover -s tests -v` (run once)
 - `python -m unittest discover -s tests -k Conflicts -v`

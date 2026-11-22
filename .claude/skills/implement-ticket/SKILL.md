@@ -19,14 +19,14 @@ The project subagents in `.claude/agents/` are part of the work. Delegate to the
 5. **Implement** inside the ticket's stated scope. Delegate the work to the implementing role that matches the files being changed (table "While coding"). Do not widen scope; note anything else you find as a follow-up.
 6. **Test.** Add or change tests for every acceptance criterion and material edge case, then run the checks listed in `CLAUDE.md`. Record each command and its result.
 7. **Specialist review.** Run every role in the table "After coding" whose trigger matches the change.
-8. **Review gate, always.** Run Code Reviewer on the full diff. Fix every material finding, re-run the checks, and have the reviewer look again until no material finding is left.
-9. **Acceptance gate, always.** Run Reality Checker with the ticket's acceptance criteria and the evidence you produced. Do not call the ticket done unless it passes.
-10. **UI quality check.** If the change touches a screen or user-facing copy, check every changed screen against the ten rules in `docs/ui-quality.md` and record the result.
-11. **Prose pass.** Run the `unslop` skill over user-facing copy, documentation and the pull request text before the pull request is opened.
-12. **Changelog.** Add one line under Unreleased in `CHANGELOG.md`.
+8. **UI quality check.** If the change touches a screen or user-facing copy, check every changed screen against the ten rules in `docs/ui-quality.md` and record the result.
+9. **Prose pass.** Run the `unslop` skill over user-facing copy and documentation before the gates, so they judge the final diff; the pull request text gets the same pass when it is written at step 13.
+10. **Changelog.** Add one line under Unreleased in `CHANGELOG.md`.
+11. **Review gate, always.** Run Code Reviewer on the full diff. Fix every material finding, re-run the checks, and have the reviewer look again until no material finding is left.
+12. **Acceptance gate, always.** Run Reality Checker with the ticket's acceptance criteria and the locally recorded evidence. It checks that the documented checks ran locally and passed and that CI is configured to run them; it is not asked to confirm a CI result. Do not open the pull request unless it passes.
 
-If steps 10 to 12 change code, re-run the checks, then Code Reviewer and Reality Checker, before step 13.
-13. **Hand off.** Capture the evidence `CLAUDE.md` asks for and open a draft pull request from `.github/pull_request_template.md` that names the issue (`Closes #n`) and the epic. The review gate hook blocks `gh pr create` and `gh pr ready` until Code Reviewer and Reality Checker have run after the last code edit. Mark the pull request ready only when CI is green on the last commit (`gh pr checks`). Only the owner merges; never merge.
+If a gate finding makes you change code, re-run the checks and, if the change touches a screen or copy, steps 8 to 10, then both gates again, before step 13.
+13. **Hand off.** Capture the evidence `CLAUDE.md` asks for. Only with the local checks passing and both gates run after the last code edit, open a draft pull request from `.github/pull_request_template.md` that names the issue (`Closes #n`) and the epic. The review gate hook blocks `gh pr create` and `gh pr ready` until Code Reviewer and Reality Checker have run after the last code edit. CI then runs on the draft; if it fails, fix, re-run the checks and both gates, and push. Mark the pull request ready (`gh pr ready`) only when CI is green on the last commit (`gh pr checks`), and comment on the issue with the CI run link. Only the owner merges; never merge.
 
 ## Roles
 
@@ -55,8 +55,8 @@ If steps 10 to 12 change code, re-run the checks, then Code Reviewer and Reality
 
 | Role | Access | Delegate to it |
 |---|---|---|
-| Code Reviewer | read-only reviewer | After implementing or changing code for a ticket, before the work is called done or a pull request is opened |
-| Reality Checker | read-only reviewer | As the last step of every ticket, to check each acceptance criterion against evidence that was actually produced before the ticket is called done |
+| Code Reviewer | read-only reviewer | After implementing or changing code for a ticket, before a pull request is opened |
+| Reality Checker | read-only reviewer | As the acceptance gate of every ticket, after Code Reviewer and before the draft pull request is opened, to check each acceptance criterion against locally recorded evidence; it does not judge CI |
 
 ## Rules
 

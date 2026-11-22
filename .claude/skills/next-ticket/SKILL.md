@@ -1,6 +1,6 @@
 ---
 name: next-ticket
-description: Owner-started driver that takes one ready ticket of epic #1 up to a ready pull request. Starting it is the owner's go signal.
+description: Owner-started driver that takes one ready ticket of epic #1 up to a ready pull request (draft first, ready only on green CI). Starting it is the owner's go signal.
 argument-hint: "[issue number]"
 disable-model-invocation: true
 ---
@@ -18,8 +18,8 @@ Run once per start. The owner starting this skill is the go signal; nothing here
 3. **Claim it.** `gh issue edit <n> --add-label status:in-progress --remove-label status:ready`.
 4. **Worktree and branch.** From the repository root: `git fetch origin`, then `git worktree add ../thumbnail-and-reel-cover-studio-<n> -b feature/<n>-<short-name> origin/main`. Work only inside that worktree; never on `main`.
 5. **Implement.** Run the `implement-ticket` playbook for the ticket: the roles at their steps, `ui-ux-pro-max` at the start of a UI ticket, the `docs/ui-quality.md` check at the end, `unslop` before the pull request, the `CHANGELOG.md` line, the evidence `CLAUDE.md` asks for.
-6. **Pull request.** Open a draft pull request from the pull request template with `Closes #<n>` and the epic. The review gate hook blocks `gh pr create` and `gh pr ready` until Code Reviewer and Reality Checker have run after the last code edit.
-7. **Mark ready.** When the gates pass and CI is green on the last commit (`gh pr checks`), run `gh pr ready` and comment on the issue with the pull request link, the evidence summary and anything left open.
+6. **Draft pull request.** Only after the local checks pass and Code Reviewer and Reality Checker have both run, open a draft pull request from the pull request template with `Closes #<n>` and the epic. The review gate hook blocks `gh pr create` and `gh pr ready` until Code Reviewer and Reality Checker have run after the last code edit.
+7. **CI, then ready.** CI runs on the draft. If it fails, fix, re-run the local checks and both gates, and push. When CI is green on the last commit (`gh pr checks`), run `gh pr ready` and comment on the issue with the pull request link, the CI run link, the evidence summary and anything left open.
 8. **Stop.** Do not merge, do not tag, do not pick another ticket. Stop every server or browser you started and report the worktree path.
 
 If a decision named in the ticket blocks the work, label the issue `needs-decision`, comment what is needed, and stop.

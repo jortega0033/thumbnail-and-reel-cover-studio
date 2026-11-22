@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 ## In this repository
 
-Cover Studio is an offline editor for static cover art: one Python 3.12+ process, standard library only (`cover_studio/server.py`, `store.py`, `crop.py`), a native JavaScript client in `cover_studio/static/`, SQLite storage, `unittest` suites in `tests/`. Hard constraints (`CLAUDE.md`; epic #1 decision S1): no pip or npm dependency, no network beyond `127.0.0.1`, no linter, no CI.
+Cover Studio is an offline editor for static cover art: one Python 3.12+ process, standard library only (`cover_studio/server.py`, `store.py`, `crop.py`), a native JavaScript client in `cover_studio/static/`, SQLite storage, `unittest` suites in `tests/`. Hard constraints (`CLAUDE.md`; epic #1 decision S1): no pip or npm dependency, no network beyond `127.0.0.1`, no linter. CI (`.github/workflows/ci.yml`) runs the unittest suite and the review-gate self-test on the draft pull request.
 
 **Your work here.** The review gate on every ticket of epic #1 (#9 to #11, #2 to #7): review the full diff before the work is called done.
 
