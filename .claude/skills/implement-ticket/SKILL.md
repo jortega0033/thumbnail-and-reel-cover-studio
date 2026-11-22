@@ -24,6 +24,8 @@ The project subagents in `.claude/agents/` are part of the work. Delegate to the
 10. **UI quality check.** If the change touches a screen or user-facing copy, check every changed screen against the ten rules in `docs/ui-quality.md` and record the result.
 11. **Prose pass.** Run the `unslop` skill over user-facing copy, documentation and the pull request text before the pull request is opened.
 12. **Changelog.** Add one line under Unreleased in `CHANGELOG.md`.
+
+If steps 10 to 12 change code, re-run the checks, then Code Reviewer and Reality Checker, before step 13.
 13. **Hand off.** Capture the evidence `CLAUDE.md` asks for and open a draft pull request from `.github/pull_request_template.md` that names the issue (`Closes #n`) and the epic. The review gate hook blocks `gh pr create` and `gh pr ready` until Code Reviewer and Reality Checker have run after the last code edit. Mark the pull request ready only when CI is green on the last commit (`gh pr checks`). Only the owner merges; never merge.
 
 ## Roles

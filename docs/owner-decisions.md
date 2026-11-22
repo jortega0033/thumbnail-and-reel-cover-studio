@@ -2,8 +2,6 @@
 
 A dated record of the decisions the owner made for this repository, so the rules do not depend on anyone's memory of a conversation. Changing any entry needs the owner; an agent that finds a decision blocking a ticket stops and says so.
 
-All entries: 2026-11-22.
-
 | # | Decision | Date | Implemented in |
 |---|---|---|---|
 | 1 | The instructions, tooling and playbook live on the default branch (`main`). | 2026-11-22 | `CLAUDE.md`, `.claude/` |

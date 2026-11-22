@@ -105,7 +105,7 @@ Loop Engineering is set up at L1: a report-only triage run that a person starts 
 
 - **Start and driver.** The owner starts ticket work with `/next-ticket` ([`.claude/skills/next-ticket/SKILL.md`](.claude/skills/next-ticket/SKILL.md)); starting it is the go signal. It runs one ticket through the [`implement-ticket`](.claude/skills/implement-ticket/SKILL.md) playbook and never merges.
 - **Review gate.** [`.claude/hooks/role_gate.py`](.claude/hooks/role_gate.py) blocks `gh pr create` and `gh pr ready` until Code Reviewer and Reality Checker have run after the last code edit. `ROLE_GATE=off` in the environment Claude Code is started from switches it off for that session.
-- **Permissions.** [`.claude/settings.json`](.claude/settings.json): documented commands are allowed; force pushes, pushes to `main`, `gh pr merge`, releases and reads of `.env` are denied; edits to CI, agent configuration and Loop files ask first.
+- **Permissions.** [`.claude/settings.json`](.claude/settings.json): see the file for what is allowed, denied and asked first. In short, force pushes, pushes to `main`, `gh pr merge`, releases and reads of `.env` are denied.
 - **CI.** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs the suite and the gate self-test on Linux and Windows. It must be green before a pull request is marked ready.
 - **Pull request.** Use [`.github/pull_request_template.md`](.github/pull_request_template.md). Tickets use [`.github/ISSUE_TEMPLATE/implementation-ticket.md`](.github/ISSUE_TEMPLATE/implementation-ticket.md) and the labels `status:ready`, `status:blocked`, `status:in-progress` and `needs-decision`.
 - **Changelog.** Every ticket pull request adds one line under Unreleased in [`CHANGELOG.md`](CHANGELOG.md).
