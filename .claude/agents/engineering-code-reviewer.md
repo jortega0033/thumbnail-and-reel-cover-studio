@@ -25,6 +25,7 @@ Cover Studio is an offline editor for static cover art: one Python 3.12+ process
 - Schema changes come with a migration step: epic S8.
 - Each acceptance criterion has a test and `Ran N tests` did not drop: `CLAUDE.md` "Evidence before calling a ticket done".
 - Documents change in the same pull request: epic S11.
+- Changed screens and copy follow the ten rules in `docs/ui-quality.md` (`ui-ux-pro-max` at the start of a UI ticket, `unslop` on copy): `CLAUDE.md` "Delivery workflow".
 
 **Not applicable below.** Authentication and authorisation checks (Host and Origin checks are the trust boundary; PRD A1), N+1 query concerns, and the `$1` placeholder example (`sqlite3` uses `?`). A broken invariant from the list above is a blocker, not a suggestion.
 

@@ -22,7 +22,7 @@ Notes:
 - `--port 0` picks a free port and prints it. `--data-dir` is required and is created if missing. Use a temporary directory for experiments; `data/` and `*.sqlite*` are ignored by Git.
 - The server runs until it is stopped. Stop every server you start (Ctrl+C in a terminal, or stop the process by its ID) and check that none is left before you finish.
 - The tests start real loopback servers on free ports with a disposable database. Run the suite once, not in a watch loop. Set `PYTHONDONTWRITEBYTECODE=1` if you do not want `__pycache__` folders.
-- There is no lint command, no build step and no CI. Do not claim a lint or CI result.
+- There is no lint command and no build step. Do not claim a lint result. CI is `.github/workflows/ci.yml` (see "Delivery workflow"); report only what `gh pr checks` shows.
 - **Not available yet:** an automated browser run and automated pixel checks. PRD checks CHK-B09 and CHK-B10 are manual today (the README "Demo flow"). The epic adds them (#10 the scripted Chrome run, #11 the pixel pipeline, #6 the end-to-end command); until then the Python suite and a manual browser run are the only checks.
 
 ## Sources of truth
@@ -53,7 +53,7 @@ The layering and its reasons are in [`docs/architecture.md`](docs/architecture.m
 
 ## Git workflow
 
-The default branch is `main`. It has no branch protection and no CI, and the repository has no contribution guide, so these rules are the workflow.
+The default branch is `main`. The rules below are the workflow; CI and the pull request template are described under "Delivery workflow".
 
 - Never commit to `main` directly and never force-push.
 - One branch per issue, cut from the tip of `origin/main`: `feature/<issue-number>-<short-name>`.
@@ -72,7 +72,8 @@ Put this in the pull request description. Report only what you ran and saw.
 4. For anything that produces pixels: the sampled coordinates and the colour values read, or the hash of the decoded pixel data, and the fixture they belong to.
 5. Each acceptance criterion of the issue with the check that proves it, or a plain statement that it was not verified and why.
 6. Every server or browser process you started has been stopped.
-7. If the change affects a status in `docs/architecture.md`, the README "Status" section or the PRD story and check tables, those are updated in the same pull request. New observed results go in the README "Baseline verification" section with date, host and commit.
+7. CI is green on the last commit (`gh pr checks`).
+8. If the change affects a status in `docs/architecture.md`, the README "Status" section or the PRD story and check tables, those are updated in the same pull request. New observed results go in the README "Baseline verification" section with date, host and commit.
 
 A claim such as "works in Chrome" without the items in point 3 does not count.
 
@@ -99,3 +100,14 @@ When asked to implement, continue or finish a GitHub issue, follow the playbook 
 ### Loop
 
 Loop Engineering is set up at L1: a report-only triage run that a person starts by hand. See [`LOOP.md`](LOOP.md). Do not add a schedule, automated fixes or auto-merge. A run rewrites the tracked files `STATE.md` and `loop-run-log.md`; start it only on the `loop/triage` branch that `LOOP.md` describes, never on `main` or a feature branch.
+
+## Delivery workflow
+
+- **Start and driver.** The owner starts ticket work with `/next-ticket` ([`.claude/skills/next-ticket/SKILL.md`](.claude/skills/next-ticket/SKILL.md)); starting it is the go signal. It runs one ticket through the [`implement-ticket`](.claude/skills/implement-ticket/SKILL.md) playbook and never merges.
+- **Review gate.** [`.claude/hooks/role_gate.py`](.claude/hooks/role_gate.py) blocks `gh pr create` and `gh pr ready` until Code Reviewer and Reality Checker have run after the last code edit. `ROLE_GATE=off` in the environment Claude Code is started from switches it off for that session.
+- **Permissions.** [`.claude/settings.json`](.claude/settings.json): documented commands are allowed; force pushes, pushes to `main`, `gh pr merge`, releases and reads of `.env` are denied; edits to CI, agent configuration and Loop files ask first.
+- **CI.** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs the suite and the gate self-test on Linux and Windows. It must be green before a pull request is marked ready.
+- **Pull request.** Use [`.github/pull_request_template.md`](.github/pull_request_template.md). Tickets use [`.github/ISSUE_TEMPLATE/implementation-ticket.md`](.github/ISSUE_TEMPLATE/implementation-ticket.md) and the labels `status:ready`, `status:blocked`, `status:in-progress` and `needs-decision`.
+- **Changelog.** Every ticket pull request adds one line under Unreleased in [`CHANGELOG.md`](CHANGELOG.md).
+- **UI and copy.** [`docs/ui-quality.md`](docs/ui-quality.md) holds the ten UI rules; the `ui-ux-pro-max` and `unslop` skills in `.claude/skills/` are used as the playbook says.
+- **Decisions and releases.** [`docs/owner-decisions.md`](docs/owner-decisions.md) records the owner's decisions. Only the owner merges and releases ([`docs/RELEASING.md`](docs/RELEASING.md), [`SECURITY.md`](SECURITY.md)).

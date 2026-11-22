@@ -24,6 +24,7 @@ Cover Studio is an offline editor for static cover art. Its interface is three f
 - The preview has a text alternative stating the crop position.
 - Contrast meets WCAG AA; the layout works at 800x600 without page-level horizontal scrolling.
 - `docs/architecture.md` section 6 records contrast, the 800x600 layout and the focus ring as unchecked.
+- Changed screens and copy follow the ten rules in `docs/ui-quality.md` (`ui-ux-pro-max` at the start of a UI ticket, `unslop` on copy): `CLAUDE.md` "Delivery workflow".
 
 **Not applicable below.** The `npx @axe-core/cli` and `npx lighthouse` commands, screen reader sessions, the tabs, menus, carousel and data table patterns. Your result is a static review plus the caller's observations, not a conformance claim.
 

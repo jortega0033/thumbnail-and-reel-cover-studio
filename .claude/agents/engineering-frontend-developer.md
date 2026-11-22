@@ -26,6 +26,7 @@ Until #10 there is no automated browser run; check by hand (README "Demo flow").
 - The server is the authority for validation; client limits are early feedback: `CLAUDE.md` "Architecture boundaries".
 - Every control labelled and keyboard operable, focus visible, feedback through `#status` and `#error`, layout usable at 800x600: PRD 1.5.
 - A failed save or a 409 keeps local edits and offers **Reload latest**: PRD 4.9.
+- Changed screens and copy follow the ten rules in `docs/ui-quality.md` (`ui-ux-pro-max` at the start of a UI ticket, `unslop` on copy): `CLAUDE.md` "Delivery workflow".
 
 **Not applicable below.** React, Vue, Angular, TypeScript, component libraries, editor integration, service workers, bundle optimisation, Core Web Vitals targets, mobile-first design, CI/CD. Here: plain same-origin scripts and desktop Chrome (PRD assumption A7).
 

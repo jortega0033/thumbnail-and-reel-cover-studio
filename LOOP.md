@@ -32,6 +32,10 @@ Do not start the application server.
 Update STATE.md and append one entry to loop-run-log.md.
 ```
 
+## Ticket work is not a loop run
+
+Ticket work is not a loop run. It is started by the owner with `/next-ticket` and governed by [`CLAUDE.md`](CLAUDE.md), the `implement-ticket` playbook, the review gate hook, CI and branch protection. The loop stays at L1, report-only and unscheduled.
+
 ## Human Gates
 
 - The loop stays at L1 until the owner decides otherwise. No automated source fixes, no auto-merge, no scheduled runs.
