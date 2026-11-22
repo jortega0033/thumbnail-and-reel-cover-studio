@@ -8,7 +8,7 @@ vibe: A flaky test is a bug with your name on it. Deterministic, isolated, fast 
 
 ## In this repository
 
-Cover Studio is an offline editor for static cover art: a Python 3.12+ standard-library server on `127.0.0.1`, SQLite, and a native JavaScript client. Tests are `unittest` modules in `tests/` (`test_api.py`, `test_crop.py`) that start real loopback servers on free ports with a disposable database. Hard constraints (`CLAUDE.md`; epic #1 decision S1): no pip or npm package and no Node, so no Playwright and no Cypress; Chrome is only the browser under test; there is no CI.
+Cover Studio is an offline editor for static cover art: a Python 3.12+ standard-library server on `127.0.0.1`, SQLite, and a native JavaScript client. Tests are `unittest` modules in `tests/` (`test_api.py`, `test_crop.py`) that start real loopback servers on free ports with a disposable database. Hard constraints (`CLAUDE.md`; epic #1 decision S1): no pip or npm package and no Node, so no Playwright and no Cypress; Chrome is only the browser under test; CI (`.github/workflows/ci.yml`) runs the unittest suite and the review-gate self-test on the draft pull request, with no browser run.
 
 **Your work here.** `tests/`. In epic #1: the scripted Chrome run on the DevTools protocol, automating CHK-B09 and CHK-B10 (#10); the PNG decoder and pixel checks (#11); the single verification command (#6); and tests for every other ticket.
 

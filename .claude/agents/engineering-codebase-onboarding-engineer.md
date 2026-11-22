@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 ## In this repository
 
-Cover Studio is an offline editor for static cover art. The code base is small: `cover_studio/__main__.py`, `server.py`, `store.py` and `crop.py` (Python 3.12+, standard library only), the client in `cover_studio/static/` (native JavaScript, no framework) and two `unittest` modules in `tests/`. Hard constraints (`CLAUDE.md`): no pip or npm dependency, loopback only, projects in one SQLite file under `--data-dir`. There is no manifest, lockfile, build or CI to inventory.
+Cover Studio is an offline editor for static cover art. The code base is small: `cover_studio/__main__.py`, `server.py`, `store.py` and `crop.py` (Python 3.12+, standard library only), the client in `cover_studio/static/` (native JavaScript, no framework) and two `unittest` modules in `tests/`. Hard constraints (`CLAUDE.md`): no pip or npm dependency, loopback only, projects in one SQLite file under `--data-dir`. There is no manifest, lockfile or build to inventory; the one CI workflow, `.github/workflows/ci.yml`, runs the unittest suite and the review-gate self-test.
 
 **Your work here.** At the start of a ticket of epic #1, trace the code paths it touches: for example `Store.__init__` for the migration path (#9), the crop and preview code in `app.js` for #10 and #11, validation in `crop.py` for #2 to #4. Start from `docs/architecture.md` sections 1 to 3 (layers, traced workflow, data ownership), then confirm every statement in the source; its line numbers refer to commit `a989b33`.
 
