@@ -132,3 +132,20 @@ Preparation pass, 2026-11-22, Windows 11, Python 3.13.14, commit `a989b33` (the 
 | CHK-B10 sample at focal 0.5, preview row 10 | x=24 `229,57,53` (red), x=25 `67,160,71` (green), x=424 green, x=425 `30,136,229` (blue) |
 
 Not done in this pass: external requests were not blocked, only observed to be absent; Google Chrome and Linux were not used; step 8 of the demo (two tabs) was not run; accessibility was not audited.
+
+## 10. Where the remaining work is tracked
+
+Epic [#1](https://github.com/jortega0033/thumbnail-and-reel-cover-studio/issues/1) holds the order of the tickets, the estimates, the finish line and the shared decisions S1 to S11. The table maps the gaps recorded above to the issues that deal with them. It was added on 2026-11-22, when the issues were written. The statuses in sections 5 to 7 change only in the pull requests that implement the work.
+
+| Gap recorded in this document | Issue |
+|---|---|
+| No migration path, `user_version` set unconditionally, the preset `CHECK` (drift items 3 and 4); no test for the unreadable database (section 6) | #9 |
+| CHK-B09 and CHK-B10 are manual, invariant I3 has no test, no client seam, no browser tooling (drift item 1, section 8); the two-tab conflict was never run in a browser (section 6) | #10 |
+| Preview and export would use different renderers, the scaling rule is open, byte-identical PNG files (drift items 6, 8 and 9) | #11 |
+| ST-01 more presets; which arithmetic is the crop contract (drift item 7) | #2 |
+| ST-02 layer transforms | #3 |
+| ST-03 masks, undo and redo | #4 |
+| ST-04 export and manifest (the compositor, the font and the PNG writer are built in #11) | #5 |
+| ST-05 verification harness (the Chrome driver is built in #10, the PNG decoder in #11) | #6 |
+| ST-06 release gate; verification target Chrome on Linux (drift item 2); accessibility still unverified (section 6) | #7 |
+| Retry wording of PRD 4.9 (drift item 5), importing images, deleting projects | outside the epic |
