@@ -13,6 +13,8 @@ Ten rules the owner approved on 2026-11-22. They are binding for every screen an
 9. Dense, aligned layouts on a consistent spacing scale. No card grid where a table or a list is the right form.
 10. User-facing copy is plain and specific: no filler, no exclamation marks, and the same word for the same thing everywhere.
 
+Rule 8 is read together with the "Accent, selection, focus and themes" section of [`design-tokens.md`](design-tokens.md) and owner decision 14: the accent also marks the current step, and `--focus` is a focus indicator that is exempt from the accent limit.
+
 ## How they are applied
 
 - A UI ticket starts with the `ui-ux-pro-max` skill (`python .claude/skills/ui-ux-pro-max/scripts/search.py "<product type>" --design-system`) and ends with a check of the changed screens against this file.
