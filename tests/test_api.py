@@ -257,7 +257,8 @@ class Persistence(unittest.TestCase):
 class StaticAssets(ApiTestCase):
     def test_static_served_with_types(self):
         for path, ctype in (("/", "text/html"), ("/static/app.js", "text/javascript"),
-                            ("/static/style.css", "text/css")):
+                            ("/static/style.css", "text/css"),
+                            ("/static/tokens.css", "text/css")):
             with self.subTest(path=path):
                 status, resp, body = self.app.call("GET", path)
                 self.assertEqual(status, 200)

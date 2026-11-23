@@ -16,6 +16,7 @@ A dated record of the decisions the owner made for this repository, so the rules
 | 10 | Open decisions on tickets are settled with the ticket's stated default (list below). | 2026-11-22 | The issues named below |
 | 11 | Rust is verified in CI only. Not applicable here: this repository has no Rust. | 2026-11-22 | none |
 | 12 | The ten UI rules in `docs/ui-quality.md` are binding, and the `ui-ux-pro-max` and `unslop` skills are installed and used for UI work and for copy. | 2026-11-22 | `docs/ui-quality.md`, `.claude/skills/ui-ux-pro-max/`, `.claude/skills/unslop/`, `.claude/skills/implement-ticket/SKILL.md` |
+| 13 | Visual system: Pipenzo Flow look tokens (docs/design-tokens.md). SDLC kit version: jortega0033/sdlc-kit v1.0.0. | 2026-11-23 | `cover_studio/static/tokens.css`, `docs/design-tokens.md` |
 
 ## Entry 10: open decisions settled by the ticket default
 
