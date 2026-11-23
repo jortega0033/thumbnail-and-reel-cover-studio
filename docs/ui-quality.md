@@ -20,3 +20,5 @@ Ten rules the owner approved on 2026-11-22. They are binding for every screen an
 - The tailored sections of Frontend Developer, Accessibility Auditor and Code Reviewer name this file in their checklists.
 - Enforcement is by the review gate (Code Reviewer on every ticket), not by a script. Rule 1 can be linted; rule 2 cannot be detected reliably from CSS.
 - Existing screens that break a rule are listed in the epic's ticket "Bring the existing screens in line with `docs/ui-quality.md`".
+
+Colours come from the Pipenzo tokens in `cover_studio/static/tokens.css`; see [`design-tokens.md`](design-tokens.md).
