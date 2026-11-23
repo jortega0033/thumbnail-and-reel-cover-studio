@@ -1,6 +1,6 @@
 # Owner decisions
 
-A dated record of the decisions the owner made for this repository, so the rules do not depend on anyone's memory of a conversation. Changing any entry needs the owner; an agent that finds a decision blocking a ticket stops and says so.
+A dated record of the decisions the owner made for this repository (and, where an entry says so, items adopted under the owner's delegation), so the rules do not depend on anyone's memory of a conversation. Changing any entry needs the owner; an agent that finds a decision blocking a ticket stops and says so.
 
 | # | Decision | Date | Implemented in |
 |---|---|---|---|
@@ -17,7 +17,7 @@ A dated record of the decisions the owner made for this repository, so the rules
 | 11 | Rust is verified in CI only. Not applicable here: this repository has no Rust. | 2026-11-22 | none |
 | 12 | The ten UI rules in `docs/ui-quality.md` are binding, and the `ui-ux-pro-max` and `unslop` skills are installed and used for UI work and for copy. | 2026-11-22 | `docs/ui-quality.md`, `.claude/skills/ui-ux-pro-max/`, `.claude/skills/unslop/`, `.claude/skills/implement-ticket/SKILL.md` |
 | 13 | Visual system: Pipenzo Flow look tokens (docs/design-tokens.md). SDLC kit version: jortega0033/sdlc-kit v1.0.0. | 2026-11-23 | `cover_studio/static/tokens.css`, `docs/design-tokens.md` |
-| 14 | Selection, focus and themes: the yellow accent covers the primary action, the current-step marker and the current selection (a selection is a solid `--primary` fill with `--on-primary` text, a non-colour sign and the aria attribute); `--focus` is exempt from the accent limit; contrast checks cover light and dark. The owner decided the selection rule on 2026-11-23. The "How", the focus rule and the theme rule were recommended by the orchestrator and adopted under the owner's delegation of the same day. | 2026-11-23 | `docs/design-tokens.md` (section "Accent, selection, focus and themes"); page changes follow in ticket work |
+| 14 | Selection, focus and themes. Decided by the owner on 2026-11-23: the yellow accent covers the primary action, the current-step marker and the current selection. How (recommended by the orchestrator, adopted under the owner's delegation of the same day): a selection is a solid `--primary` fill with `--on-primary` text, a non-colour sign and the aria attribute. Also adopted under that delegation: `--focus` is exempt from the accent limit, and contrast checks cover light and dark. | 2026-11-23 | `docs/design-tokens.md` (section "Accent, selection, focus and themes"), `docs/ui-quality.md`; page changes follow in ticket work |
 
 ## Entry 10: open decisions settled by the ticket default
 
