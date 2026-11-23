@@ -24,5 +24,5 @@ The visual system is the Pipenzo "Flow look": a black page, Flow-style alpha lay
 
 - New UI uses these tokens; no new colour literals (hex, `rgb()`, `hsl()` or named colours) in CSS or JavaScript.
 - JavaScript that draws on a canvas reads a token with `getComputedStyle(document.documentElement).getPropertyValue('--token')` (the `token()` helper in `app.js`).
-- Allowed literals: colours that are data (the fixture source image bands) and canvas effects that have no token (the overlay text shadow).
+- Allowed literals: colours that are data (the fixture source image bands) and canvas effects that have no token (the overlay text shadow `rgba(0,0,0,0.85)`). Resetting the canvas shadow after the overlay text uses `shadowBlur = 0` and zero offsets, so no colour literal is involved.
 - The UI rules in [`ui-quality.md`](ui-quality.md) still apply on top of the tokens.

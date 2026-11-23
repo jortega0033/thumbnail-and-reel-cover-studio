@@ -113,7 +113,7 @@
       ctx.shadowOffsetX = 2; ctx.shadowOffsetY = 2;
       var y = OUT_H - 40 - (lines.length - 1) * lh;
       for (var i = 0; i < lines.length; i++) ctx.fillText(lines[i], OUT_W / 2, y + i * lh);
-      ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 0;
+      ctx.shadowBlur = 0; ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 0;
     }
     el.preview.setAttribute('aria-label', 'Preview of crop at x ' + x + ', 450 by 800. Bands: ' +
       bandsDescription(x) + (text ? '. Overlay text: ' + text : '. No overlay text'));

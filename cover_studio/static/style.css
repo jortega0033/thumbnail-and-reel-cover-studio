@@ -31,7 +31,7 @@ h2 { font-size: 0.95rem; margin: 14px 0 6px; color: var(--muted); }
   cursor: pointer;
   overflow-wrap: anywhere;
 }
-#project-list button[aria-current="true"] { border-color: var(--fg); background: var(--state-selected); font-weight: 600; }
+#project-list button[aria-current="true"] { border-color: var(--fg); background: var(--bg-raised); font-weight: 600; }
 .btn {
   background: var(--primary);
   color: var(--on-primary);
@@ -42,6 +42,7 @@ h2 { font-size: 0.95rem; margin: 14px 0 6px; color: var(--muted); }
   font-weight: 600;
   cursor: pointer;
 }
+#new-project, #reload { background: var(--bg-raised); color: var(--fg); border: 1px solid var(--control-border); }
 .btn:disabled { opacity: 0.55; cursor: not-allowed; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .field { margin-bottom: 8px; min-width: 0; }
