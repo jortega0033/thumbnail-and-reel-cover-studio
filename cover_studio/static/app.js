@@ -6,6 +6,10 @@
   var BANDS = ['red', 'green', 'blue'];
   var API = '/api/v1/projects';
 
+  function token(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
   function $(id) { return document.getElementById(id); }
   var el = {
     title: $('title'), overlay: $('overlay'), count: $('overlay-count'),
@@ -104,7 +108,7 @@
       ctx.font = 'bold ' + size + 'px system-ui, Arial, sans-serif';
       ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
       var lines = wrapLines(ctx, text, OUT_W - 48);
-      ctx.fillStyle = '#fff';
+      ctx.fillStyle = token('--on-media');
       ctx.shadowColor = 'rgba(0,0,0,0.85)'; ctx.shadowBlur = 8;
       ctx.shadowOffsetX = 2; ctx.shadowOffsetY = 2;
       var y = OUT_H - 40 - (lines.length - 1) * lh;
@@ -118,10 +122,10 @@
   function drawOverview() {
     var x = cropX(), ctx = el.overview.getContext('2d');
     ctx.drawImage(source, 0, 0);
-    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.fillStyle = token('--scrim');
     ctx.fillRect(0, 0, x, SRC_H);
     ctx.fillRect(x + OUT_W, 0, SRC_W - x - OUT_W, SRC_H);
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 6;
+    ctx.strokeStyle = token('--on-media'); ctx.lineWidth = 6;
     ctx.strokeRect(x + 3, 3, OUT_W - 6, SRC_H - 6);
     el.overview.setAttribute('aria-label', 'Source overview 1200 by 800 with crop rectangle at x ' + x +
       ', width 450. Bands in crop: ' + bandsDescription(x));
