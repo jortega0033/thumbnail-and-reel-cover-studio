@@ -6,4 +6,5 @@ All notable changes to this project are recorded here. The format follows [Keep 
 
 ### Added
 
+- Program goal, score and phases 1 to 6 (#62).
 - SDLC kit: review gate hook, CI on Linux and Windows, pull request template, issue template, `docs/ui-quality.md`, `docs/owner-decisions.md`, the `next-ticket` driver and the `ui-ux-pro-max` and `unslop` skills.

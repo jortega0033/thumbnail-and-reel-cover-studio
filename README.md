@@ -2,6 +2,25 @@
 
 A small offline editor for static thumbnail and reel cover art. Choose a focal point, watch a real crop preview update, add a text overlay, save the project, and reopen it later, even after a restart. Runs entirely on your machine with the Python standard library, SQLite, and native browser JavaScript. No npm or pip packages.
 
+## Program goal
+
+Build a professional layout and image editor for covers, thumbnails and whole campaign sets: its own text engine, vector and raster compositor, effects and design templates, exact to the pixel in the browser and in the exporter, with no imaging, font or layout library.
+
+The program is planned ([#62](https://github.com/jortega0033/thumbnail-and-reel-cover-studio/issues/62)). Phase 1 is the current epic [#1](https://github.com/jortega0033/thumbnail-and-reel-cover-studio/issues/1) and the only phase with tickets.
+
+**Score.** Share of a fixed set of generated designs where the preview, the exporter and an independent reference renderer agree on every pixel, next to the share of a pinned text-shaping test set that gives the expected glyphs and positions.
+
+| Phase | Content | Hours (rough) | Issue |
+|---|---|---|---|
+| 1 | The current epic and its tickets | 92 to 145 | [#1](https://github.com/jortega0033/thumbnail-and-reel-cover-studio/issues/1) |
+| 2 | Text engine | 150 to 250 | [#63](https://github.com/jortega0033/thumbnail-and-reel-cover-studio/issues/63) |
+| 3 | Compositor | 120 to 200 | [#64](https://github.com/jortega0033/thumbnail-and-reel-cover-studio/issues/64) |
+| 4 | Image files | 120 to 210 | [#65](https://github.com/jortega0033/thumbnail-and-reel-cover-studio/issues/65) |
+| 5 | Design system and automation | 100 to 170 | [#66](https://github.com/jortega0033/thumbnail-and-reel-cover-studio/issues/66) |
+| 6 | Scale and collaboration | 120 to 200 | [#67](https://github.com/jortega0033/thumbnail-and-reel-cover-studio/issues/67) |
+
+About 700 to 1180 engineer hours in total: rough estimates, not measurements. The numbers in the score and the finish lines are targets until a run shows them. Only phase 1 has tickets to work; the sub-issues of a later phase are written when it starts. No single session is expected to reach the end.
+
 ## Status
 Baseline milestone (M1): one working preset (Reel cover 9:16, 450x800) over a generated 1200x800 red/green/blue stripe canvas, an editable text overlay, a focal point that moves the crop, and SQLite save/reopen. Batch PNG export, masks, undo, keyboard layer transforms and more presets are planned. See [docs/PRD.md](docs/PRD.md).
 

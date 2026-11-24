@@ -1,5 +1,7 @@
 # Cover Studio: PRD and Technical Specification
 
+> This document specifies phase 1 of the program in [#62](https://github.com/jortega0033/thumbnail-and-reel-cover-studio/issues/62). Hour figures in it are early estimates for that phase; its open tickets add up to 92 to 145 hours (2026-11-24). Work that it defers is planned in the later phases only where the program names it.
+
 Status: baseline milestone M1 implemented locally; milestones M2 to M6 are planned. Items marked **[Default]** are proposed defaults that can be changed. Items marked **[Open]** are unresolved.
 
 This document describes the target. The current state of the code, the checks that were actually observed, and the known differences between this document and the repository are recorded in [architecture.md](architecture.md).

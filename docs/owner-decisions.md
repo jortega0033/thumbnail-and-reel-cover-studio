@@ -37,3 +37,14 @@ Epic #1 lists these under "Open decisions (defaults apply unless the owner chang
 | #5 | Byte identity of PNG files | Promised per installation; pinned hashes are of decoded pixels |
 | #7 | Gate host | Chrome on Linux (PRD A7). A Windows-only finish needs the owner's acceptance in #7: flag in issue |
 | #1 | Outside this batch | Importing images, deleting projects, recognising a repeated save as "already advanced" (PRD 4.9) |
+
+## Program decisions (owner, 2026-11-24)
+
+The owner accepted the goal and each suggestion below. They apply from the phase they name; the rules of `CLAUDE.md` hold for phase 1 as written.
+
+| Decision | Implemented in |
+|---|---|
+| The repository has a program goal above phase 1: a professional layout and image editor with its own text engine, in six phases. | Program issue #62 |
+| "No animation", "no accounts" and "no cloud sync" stay. Collaboration is tested on loopback only. | Program issue #62 |
+| Fonts need a licence-clean source. Suggested: only fonts under the SIL Open Font License, listed with their origin. | Program issue #62 |
+| Suggested: Python stays the reference renderer; WebAssembly is decided when phase 6 starts. | Program issue #62 |
